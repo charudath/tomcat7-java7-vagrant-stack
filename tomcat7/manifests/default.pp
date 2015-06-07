@@ -11,7 +11,7 @@ service { "apache2":
 }
 file { "/var/www/sample-webapp":
   ensure  => "link",
-  target  => "/vagrant/sample-webapp",
+  target  => "/workspace/sample-webapp",
   require => Package["apache2"],
   notify  => Service["apache2"],
 }
