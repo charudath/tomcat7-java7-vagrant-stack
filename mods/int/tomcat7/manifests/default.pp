@@ -8,6 +8,11 @@ $group = "tomcat"
 
 exec { "apt-get update": path => "/usr/bin", }
 
+package { "git":
+  ensure  => present,
+  require => Exec["apt-get update"],
+}
+
 package { "wget":
   ensure  => present,
   require => Exec["apt-get update"],
@@ -23,27 +28,26 @@ exec { "get_tomcat7":
   logoutput => "on_failure"
 }
 
-user { "user_create":
-    creates => "/home/$user",
+
+
+group {  $group: ensure => present, require => Exec['get_tomcat7'], }
+
+user { $user:
     ensure    => present,
     comment   => "Tomcat User",
     home      => "/home/$user",
     shell     => "/bin/bash",
     gid    => $group,
-    require => Exec["get_tomcat7"],
+    require => group["$group"],
   }
 
-group { "group_create": $group: ensure => present, require => user["user_create"], }
 
 exec { "setup_tomcat7":
-  owner     => "$user",
-  mode      => 0755,
-  recurse   => true,
   creates => "${catalina_home}",
   command => "tar xfvz /tmp/${catalina_archive}",
   path    => ["/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/"],
   cwd     => "/opt",
-  require => group["group_create"],
+  require => user["$user"],
 }
 
 file { "/etc/profile.d/java.sh":
@@ -65,17 +69,19 @@ file { "${catalina_home}/conf/server.xml":
     target  => "/workspace/server.xml",
     require => Exec['setup_tomcat7'],
   }
-  
+
   file { "${catalina_home}/bin/catalina.sh":
-    owner     => "$user",
-    mode      => 0755,
-    ensure  => "present",
-    target  => "/workspace/catalina.sh",
-    require => Exec['setup_tomcat7'],
-  }
-  
+		ensure => present,
+		owner => "$user",
+		group => "$group",
+		mode => '0755',
+		source => '/workspace/catalina.sh',
+}
+
+
+
+
   exec { "start_tomcat7":
-  owner     => "$user",
   command => "${catalina_home}/bin/catalina.sh start",
   path    => ["/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/"],
   cwd     => "${catalina_home}/bin/",

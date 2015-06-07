@@ -96,7 +96,7 @@
 # -----------------------------------------------------------------------------
 
 # custom memory settings
-JAVA_OPTS="-Xmx1024m -Xmx2048m -XX:NewSize=256m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m -Djdk.xml.entityExpansionLimit=0"
+JAVA_OPTS="-Djava.awt.headless=true -XX:+UseConcMarkSweepGC -Xmx1024m -Xmx2048m -XX:NewSize=256m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m -Djdk.xml.entityExpansionLimit=0"
 
 # OS specific support.  $var _must_ be set to either true or false.
 cygwin=false
