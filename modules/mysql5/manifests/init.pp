@@ -1,5 +1,5 @@
 class { '::mysql::server':
-  root_password           => 'password',
-  remove_default_accounts => true,
-  override_options        => $override_options
-}
+      root_password    => 'password',
+      override_options => { 'mysqld' => { 'bind_address' => '0.0.0.0' } }
+      
+      }
