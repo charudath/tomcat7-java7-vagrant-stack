@@ -38,7 +38,7 @@ Vagrant.configure("2") do |config|
     web.vm.provision "puppet" do |puppet|
           puppet.manifests_path = 'manifests'
           puppet.module_path = 'modules'
-          puppet.manifest_file = 'init.pp'
+          puppet.manifest_file = "init.pp"
           puppet.options = "--verbose --debug"
         end
   end
