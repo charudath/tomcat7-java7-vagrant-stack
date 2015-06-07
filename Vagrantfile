@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
   config.puppet_install.puppet_version ="3.2.1"
   config.vm.provision :puppet
   config.ssh.forward_agent = true
-  config.vm.synced_folder ".", "/dummy", disabled: true
+  #config.vm.synced_folder ".", "/workspace", disabled: false
 
   config.vm.provider :aws do |aws, override|
     aws.access_key_id = aws_config["aws.access_key_id"]
@@ -31,14 +31,12 @@ Vagrant.configure("2") do |config|
     end
     # web.vm.provider :aws do |aws|        aws.elastic_ip = node_values[':ip']      end
     web.vm.synced_folder 'mods/int/tomcat7/files', '/workspace', type: "rsync"
-    web.vm.synced_folder 'all/files', '/workspace', type: "rsync"
-    web.vm.synced_folder 'mods/int/mysql5/files', '/workspace', type: "rsync"
+    #web.vm.synced_folder 'all/files', '/workspace', type: "rsync"
+    #web.vm.synced_folder 'mods/int/mysql5/files', '/workspace', type: "rsync"
     web.vm.provision "puppet" do |puppet|
-          puppet.module_path = "mods"
-
-          puppet.manifests_path =  "mods/int/tomcat7/manifests"
-
-          puppet.manifest_file = "default.pp"
+          puppet.manifests_path = 'manifests'
+          puppet.module_path = 'modules'
+          puppet.manifest_file = 'init.pp'
           puppet.options = "--verbose --debug"
         end
   end

@@ -55,7 +55,7 @@ file { "/etc/profile.d/java.sh":
                   export PATH=\$PATH:\$CATALINA_HOME/bin",
   require => Exec['setup_tomcat7'],
 }
-
+class tocat7{
 file { "${catalina_home}/webapps":
   ensure  => directory,
   purge   => true,
@@ -93,4 +93,6 @@ file { "${catalina_home}/conf/server.xml":
   path    => ["/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/"],
   cwd     => "${catalina_home}/bin/",
   require => file['example-webapp'],
+}
+}
 }
