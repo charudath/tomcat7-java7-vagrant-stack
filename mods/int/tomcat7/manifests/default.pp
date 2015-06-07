@@ -79,10 +79,10 @@ file { "${catalina_home}/conf/server.xml":
 		source => '/workspace/catalina.sh',
 }
 
- file { 'example-webapp':
+ file { "example-webapp":
    ensure => present,
-   path => '${catalina_home}/webapps/ROOT/',
-   source => '/workspace/ROOT-example-web-app/',
+   path => "${catalina_home}/webapps/ROOT/",
+   source => "/workspace/ROOT-example-web-app/",
    recurse => true,
    require => file["${catalina_home}/bin/catalina.sh"],
 }
