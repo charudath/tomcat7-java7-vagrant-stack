@@ -1,5 +1,5 @@
 
-class tomcat7 {
+class tomcat7 (
 
 $catalina_download_url = "http://www.eu.apache.org/dist/tomcat/tomcat-7/v7.0.62/bin/apache-tomcat-7.0.62.tar.gz"
 $catalina_archive = "apache-tomcat-7.0.62.tar.gz"
@@ -7,7 +7,7 @@ $catalina_home = "/opt/apache-tomcat-7.0.62"
 $catalina_folder = "apache-tomcat-7.0.62"
 $user = "tomcat"
 $group = "tomcat"
-
+){
 exec { "apt-get update": path => "/usr/bin", }
 
 package { "git":

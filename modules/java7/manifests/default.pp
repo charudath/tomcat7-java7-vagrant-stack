@@ -1,9 +1,10 @@
-class java7 {
+class java7 (
 $java_download_url = "http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.tar.gz"
 $java_archive = "jdk-7u79-linux-x64.tar.gz"
 $java_home = "/opt/jdk1.7.0_79"
 $java_folder = "jdk1.7.0_79"
-
+) {
+  
 exec { "apt-get update": path => "/usr/bin", }
 
 package { "wget":
