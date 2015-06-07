@@ -9,12 +9,8 @@ Vagrant.configure("2") do |config|
   config.puppet_install.puppet_version ="3.2.1"
   config.vm.provision :puppet
   config.ssh.forward_agent = true
-
-
   config.vm.synced_folder ".", "/dummy", disabled: true
 
-
-  
   config.vm.provider :aws do |aws, override|
     aws.access_key_id = aws_config["aws.access_key_id"]
     aws.secret_access_key = aws_config["aws.secret_access_key"]
@@ -39,7 +35,7 @@ Vagrant.configure("2") do |config|
     web.vm.synced_folder 'mods/int/mysql5/files', '/workspace', type: "rsync"
     web.vm.provision "puppet" do |puppet|
           puppet.module_path = "mods"
-          puppet.manifests_path = ["mods/int/java7/manifests", "mods/int/tomcat7/manifests", "mods/int/mysql5/manifests"] 
+          puppet.manifests_path =  "mods/int/tomcat7/manifests"
           puppet.manifest_file = "default.pp"
           puppet.options = "--verbose --debug"
         end
