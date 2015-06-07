@@ -64,4 +64,3 @@ file { "/etc/profile.d/java.sh":
   require => Exec['set_javac7'],
 }
 }
-}

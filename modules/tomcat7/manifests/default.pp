@@ -1,4 +1,4 @@
-
+class tomcat7{
 $catalina_download_url = "http://www.eu.apache.org/dist/tomcat/tomcat-7/v7.0.62/bin/apache-tomcat-7.0.62.tar.gz"
 $catalina_archive = "apache-tomcat-7.0.62.tar.gz"
 $catalina_home = "/opt/apache-tomcat-7.0.62"
@@ -55,7 +55,7 @@ file { "/etc/profile.d/java.sh":
                   export PATH=\$PATH:\$CATALINA_HOME/bin",
   require => Exec['setup_tomcat7'],
 }
-class tocat7{
+
 file { "${catalina_home}/webapps":
   ensure  => directory,
   purge   => true,
@@ -93,6 +93,5 @@ file { "${catalina_home}/conf/server.xml":
   path    => ["/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/"],
   cwd     => "${catalina_home}/bin/",
   require => file['example-webapp'],
-}
 }
 }
