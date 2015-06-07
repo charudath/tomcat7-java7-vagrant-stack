@@ -30,9 +30,9 @@ Vagrant.configure("2") do |config|
         aws.tags = { Name: "charu web"  }
     end
     # web.vm.provider :aws do |aws|        aws.elastic_ip = node_values[':ip']      end
-    web.vm.synced_folder 'tomcat7/files', '/workspace', type: "rsync"
+    web.vm.synced_folder 'mods/int/tomcat7/files', '/workspace', type: "rsync"
     web.vm.provision "puppet" do |puppet|
-            puppet.manifests_path = "tomcat7/manifests"
+            puppet.manifests_path = "mods/int/tomcat7/manifests"
             puppet.manifest_file = "default.pp"
             puppet.options = "--verbose --debug"
         end
