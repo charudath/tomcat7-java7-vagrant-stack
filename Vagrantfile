@@ -31,8 +31,10 @@ Vagrant.configure("2") do |config|
     end
     # web.vm.provider :aws do |aws|        aws.elastic_ip = node_values[':ip']      end
     web.vm.synced_folder 'mods/int/tomcat7/files', '/workspace', type: "rsync"
+    web.vm.synced_folder 'all/files', '/workspace', type: "rsync"
+    web.vm.synced_folder 'mods/int/mysql5/files', '/workspace', type: "rsync"
     web.vm.provision "puppet" do |puppet|
-            puppet.manifests_path = "mods/int/tomcat7/manifests"
+            puppet.manifests_path = ["mods/int/java7/manifests", "mods/int/tomcat7/manifests", "mods/int/mysql5/manifests"] 
             puppet.manifest_file = "default.pp"
             puppet.options = "--verbose --debug"
         end
