@@ -29,7 +29,7 @@ user { "user_create":
     comment   => "Tomcat User",
     home      => "/home/$user",
     shell     => "/bin/bash",
-    gid    => $group
+    gid    => $group,
     require => Exec["get_tomcat7"],
   }
 
