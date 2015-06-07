@@ -10,7 +10,9 @@ Vagrant.configure("2") do |config|
   config.vm.provision :puppet
   config.ssh.forward_agent = true
 
+
   config.vm.synced_folder ".", "/dummy", disabled: true
+
 
   
   config.vm.provider :aws do |aws, override|
