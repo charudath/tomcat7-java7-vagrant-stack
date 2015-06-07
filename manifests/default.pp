@@ -1,1 +1,1 @@
-include java7, tomcat7
+include java7, tomcat7, '::mysql::server'
