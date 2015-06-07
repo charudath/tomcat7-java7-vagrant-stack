@@ -66,10 +66,11 @@ file { "${catalina_home}/webapps":
 
 file { "${catalina_home}/conf/server.xml":
     ensure  => "present",
-    target  => "/workspace/server.xml",
+    source  => "/workspace/server.xml",
     require => Exec['setup_tomcat7'],
   }
-
+  
+ 
   file { "${catalina_home}/bin/catalina.sh":
 		ensure => present,
 		owner => "$user",
@@ -78,12 +79,18 @@ file { "${catalina_home}/conf/server.xml":
 		source => '/workspace/catalina.sh',
 }
 
-
+ file { 'example-webapp':
+   ensure => present,
+   path => '${catalina_home}/webapps/ROOT/',
+   source => '/workspace/ROOT-example-web-app/',
+   recurse => true,
+   require => file["${catalina_home}/bin/catalina.sh"],
+}
 
 
   exec { "start_tomcat7":
   command => "${catalina_home}/bin/catalina.sh start",
   path    => ["/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/"],
   cwd     => "${catalina_home}/bin/",
-  require => file["${catalina_home}/bin/catalina.sh"],
+  require => file['example-webapp'],
 }
