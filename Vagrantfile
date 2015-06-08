@@ -36,11 +36,10 @@ Vagrant.configure("2") do |config|
     #web.vm.synced_folder 'all/files', '/workspace', type: "rsync"
     #web.vm.synced_folder 'mods/int/mysql5/files', '/workspace', type: "rsync"
     web.vm.provision "puppet" do |puppet|
-          puppet.manifests_path = "puppet"
-          puppet.manifest_file = "default.pp"
-          puppet.module_path = "puppet/modules"
-          
-          puppet.options = "--verbose --debug"
+      puppet.manifests_path = "puppet"
+      puppet.manifest_file = "default.pp"
+      puppet.module_path = "puppet/modules"
+      puppet.options = "--verbose --debug"
           
             #puppet_role = "all"
             #environment = "vagrant"
@@ -48,6 +47,7 @@ Vagrant.configure("2") do |config|
             #options = "--verbose --debug"
             #puppet_execute = "include java7"
             #puppet.options = "--modulepath='#{modulepath}' #{options} -e '#{puppet_execute}' --environment=#{environment}"
+            #puppet.options = "--modulepath='puppet/modules' --verbose --debug -e 'puppet/default.pp'"
         end
   end
 

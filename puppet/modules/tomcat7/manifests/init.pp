@@ -8,17 +8,6 @@ $catalina_folder = "apache-tomcat-7.0.62"
 $user = "tomcat"
 $group = "tomcat"
 
-exec { "apt-get update": path => "/usr/bin", }
-
-package { "git":
-  ensure  => present,
-  require => Exec["apt-get update"],
-}
-
-package { "wget":
-  ensure  => present,
-  require => Exec["apt-get update"],
-}
 
 exec { "get_tomcat7":
   cwd       => "/tmp",
@@ -52,7 +41,7 @@ exec { "setup_tomcat7":
   require => user["$user"],
 }
 
-file { "/etc/profile.d/java.sh":
+file { "/etc/profile.d/catalina.sh":
   content => "export CATALINA_HOME=${catalina_home}
                   export PATH=\$PATH:\$CATALINA_HOME/bin",
   require => Exec['setup_tomcat7'],
