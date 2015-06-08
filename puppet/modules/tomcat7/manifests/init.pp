@@ -29,7 +29,7 @@ user { $user:
     home      => "/home/$user",
     shell     => "/bin/bash",
     gid    => $group,
-    require => group["$group"],
+    require => Group["$group"],
   }
 
 
@@ -38,7 +38,7 @@ exec { "setup_tomcat7":
   command => "tar xfvz /tmp/${catalina_archive}",
   path    => ["/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/"],
   cwd     => "/opt",
-  require => user["$user"],
+  require => User["$user"],
 }
 
 file { "/etc/profile.d/catalina.sh":
@@ -75,7 +75,7 @@ file { "${catalina_home}/conf/server.xml":
    path => "${catalina_home}/webapps/ROOT/",
    source => "/workspace/ROOT-example-web-app/",
    recurse => true,
-   require => file["${catalina_home}/bin/catalina.sh"],
+   require => File["${catalina_home}/bin/catalina.sh"],
 }
 
 
@@ -83,6 +83,6 @@ file { "${catalina_home}/conf/server.xml":
   command => "${catalina_home}/bin/catalina.sh start",
   path    => ["/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/"],
   cwd     => "${catalina_home}/bin/",
-  require => file['example-webapp'],
+  require => File['example-webapp'],
 }
 }
