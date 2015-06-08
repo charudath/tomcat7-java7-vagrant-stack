@@ -2,9 +2,9 @@
 <style type="text/css">
 .ab_center
 {
-	height:300px;
+	height:100px;
 	width:300px;
-	background-color:grey;
+	background-color:#B0C0E0;
 	position:absolute;
 	margin:auto;
 	top:0;
@@ -18,7 +18,7 @@
 
 
 <div class="ab_center">
-
+<br><br><br><br>
 
 Alright, all went well<br>
 You got Java 1.7, Tomcat 7 & Mysql 5</br>
