@@ -14,6 +14,6 @@ package { "wget":
 include java7,tomcat7
 
 class { 'mysql::server':
-        root_password => 'nova'
+        root_password => 'password'
     }
 
