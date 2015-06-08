@@ -5,15 +5,6 @@ $java_archive = "jdk-7u79-linux-x64.tar.gz"
 $java_home = "/opt/jdk1.7.0_79"
 $java_folder = "jdk1.7.0_79"
 
-
-  
-exec { "apt-get update": path => "/usr/bin", }
-
-package { "wget":
-  ensure  => present,
-  require => Exec["apt-get update"],
-}
-
 exec { 'get_java7':
   cwd       => "/tmp",
   timeout   => 900,

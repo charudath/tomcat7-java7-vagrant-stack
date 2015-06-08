@@ -8,17 +8,6 @@ $catalina_folder = "apache-tomcat-7.0.62"
 $user = "tomcat"
 $group = "tomcat"
 
-exec { "apt-get update": path => "/usr/bin", }
-
-package { "git":
-  ensure  => present,
-  require => Exec["apt-get update"],
-}
-
-package { "wget":
-  ensure  => present,
-  require => Exec["apt-get update"],
-}
 
 exec { "get_tomcat7":
   cwd       => "/tmp",
