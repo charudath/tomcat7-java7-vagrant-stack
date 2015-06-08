@@ -18,7 +18,7 @@
 
 
 <div class="ab_center">
-<br><br><br><br>
+<br><br>
 
 Alright, all went well<br>
 You got Java 1.7, Tomcat 7 & Mysql 5</br>
