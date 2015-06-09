@@ -4,15 +4,15 @@
 #### Purpose
 
 If you need a ready java web app dev stack quickly, clone this repo, setup the conf files, do a "vagrant up".
-You will have a running dev/test environment on AWS or local depneding on your vagrant configuration.
+You will have a running dev/test environment on AWS or local depending on your vagrant configuration.
 
 #### Prerequisite
 
 AWS account : 
-  access and secret key
-  .pem or .ppk SSH key to access your AWS servers(you can create one on AWS)
+  * access and secret key
+  * .pem or .ppk SSH key to access your AWS servers(you can create one on AWS)
 
-#### How To...crisp
+#### How To...use
 
 - git clone --recursive https://github.com/charudath/tomcat7-java7-vagrant-stack
 - cd tomcat7-java7-vagrant-stack/
@@ -32,5 +32,34 @@ override.ssh.username : "ubuntu"
 override.ssh.private_key_path : "yourSSHKey.pem"
 ```
 - vagrant up
+
+#### How To setup...detais
+
+##### AWS
+
+- Signup at http://aws.amazon.com/console/.
+- create a Ubuntu 14 based dev box.
+    - create keypair, sec group, note down the subnet and other details.
+
+
+##### Vagrant
+
+- SSH into the Ubuntu dev box, run the foll
+
+```
+sudo apt-get update
+wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.2_x86_64.deb
+sudo dpkg -i vag*.deb
+sudo apt-get install make
+sudo apt-get install git
+sudo apt-get install gcc
+```
+
+
+
+
+##### Background
+
+##### Background
 
 
