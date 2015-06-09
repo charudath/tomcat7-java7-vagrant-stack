@@ -83,12 +83,13 @@ puppet.module_path = "puppet/modules"
 They correspond to 
 -	.(root)
 	-	puppet
+		-	default.pp	
 		-	modules
 			-	java7
 				-	manifests
 					-	init.pp
 			-	someOtherModule
-	-	default.pp
+
 
 
 Some hard rules :
