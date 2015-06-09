@@ -82,6 +82,9 @@ puppet.module_path = "puppet/modules"
 ```
 They correspond to 
 -	.(root)
+	-	Vagrantfile
+	-	props.yml
+	-	ssh.pem
 	-	puppet
 		-	default.pp	
 		-	modules
