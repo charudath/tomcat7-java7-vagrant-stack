@@ -85,9 +85,9 @@ They correspond to
 	-	Vagrantfile
 	-	props.yml
 	-	ssh.pem
-	-	puppet
-		-	default.pp	
-		-	modules
+	-	*puppet*
+		-	*default.pp*	
+		-	*modules*
 			-	java7
 				-	manifests
 					-	init.pp
