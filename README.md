@@ -87,6 +87,7 @@ They correspond to
 			-	java7
 				-	manifests
 					-	init.pp
+			-	someOtherModule
 	-	default.pp
 
 
