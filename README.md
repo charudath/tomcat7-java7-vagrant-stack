@@ -12,16 +12,16 @@ AWS account :
   * access and secret key
   * .pem or .ppk SSH key to access your AWS servers(you can create one on AWS)
 
-#### How To setup...detais
+#### How to setup...detais
 
-##### AWS
+###### AWS
 
 - Signup at http://aws.amazon.com/console/.
 - create a Ubuntu 14 based dev box.
     - create keypair, sec group, note down the subnet and other details.
 
 
-##### Vagrant
+###### Vagrant
 
 - SSH into the Ubuntu dev box, run the foll
 
@@ -33,15 +33,21 @@ sudo apt-get install make
 sudo apt-get install git
 sudo apt-get install gcc
 ```
+- Setup AWS box for Vagrant
+  - Refer https://github.com/mitchellh/vagrant-aws
+```
+vagrant plugin install vagrant-aws
+vagrant box add dummy https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box
+```
 
-##### This stack 
+###### This stack 
 
 - clone this repo and setup the config file
 
 ```
 git clone --recursive https://github.com/charudath/tomcat7-java7-vagrant-stack
 cd tomcat7-java7-vagrant-stack/
-cp yourcert.pem .
+cp yourcert.pem . (copy your AWS SSH key here, MAKE SURE chmod 400 for pem !)
 vi props.yml (update as below)
 vagrant up
 ```
@@ -60,8 +66,8 @@ override.ssh.private_key_path : "yourSSHKey.pem"
 ```
 
 
-##### Background
+#### How to extend
 
-##### Background
+
 
 
