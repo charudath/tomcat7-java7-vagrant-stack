@@ -81,7 +81,7 @@ puppet.manifest_file = "default.pp"
 puppet.module_path = "puppet/modules"
 ```
 They correspond to 
--	.
+-	.(root)
 	-	puppet
 		-	modules
 			-	java7
